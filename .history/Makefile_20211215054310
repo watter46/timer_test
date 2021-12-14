@@ -113,8 +113,14 @@ ide-helper:
 # Laravel/ui vue.js vue-router install command
 
 	composer require laravel/ui 1.* && \
-	php artisan ui bootstrap && \
 	php artisan ui vue --auth && \
 	npm install && \
 	npm run dev && \
 	npm install vue-router
+vue-auth:
+	docker compose exec app composer require laravel/ui 1.* && \
+	docker compose exec app php artisan ui vue --auth && \
+	docker compose exec app npm install && \
+	docker compose exec app npm run dev
+vue-router:
+	docker compose exec app npm install vue-router
